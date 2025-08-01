@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy National Girlfriend Day ❤️</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        main {
+            flex: 1;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 50px;
+        }
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: justify;
+        }
+
+        /* Typewriter effect */
+        .typewriter {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid white;
+            display: inline-block;
+            animation: typing 4s steps(40) 1s 1 normal both, blink .7s infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            animation: floatUp 6s linear infinite;
+        }
+        @keyframes floatUp {
+            0% {transform: translateY(100vh) scale(1);}
+            100% {transform: translateY(-10vh) scale(1.5);}
+        }
+
+        /* Button */
+        button {
+            background: white;
+            color: #ff6b81;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background: #ffe6eb;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Quotes Carousel */
+        .quotes {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 1.3rem;
+            height: 40px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: left;
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item::before {
+            content: "❤️";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+        .timeline .date {
+            font-size: 0.9rem;
+            color: #fff8;
+            margin-bottom: 5px;
+        }
+        .timeline-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transform: rotate(-2deg);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .timeline-item img:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+        .timeline .content h3 {
+            margin: 5px 0;
+            color: #fff;
+        }
+        .timeline .content p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            color: #ff6b81;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 300px;
+            text-align: center;
+            animation: pop 0.3s ease;
+        }
+        @keyframes pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Music Button */
+        .music-control {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: white;
+            color: #ff6b81;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .typewriter { font-size: 1.2rem; }
+            footer { position: fixed; bottom: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts"></div>
+
+    <main>
+        <h1>Happy National Girlfriend Day, My Alliyah ❤️</h1>
+        <div class="typewriter">To the love of my life...</div>
+        <p>Hi Bub! I just want you to know that you're the best thing that ever happened to me. Thank you for being my girlfriend, my best friend, and my everything. You are Enough and always enough. Thank you for staying with me, babu. 
+            <br><br>
+        Simula nang dumating ka, Marami ang nagbago sa akin, marami ang nangyari sa buhay ko na minsan hindi ko inaasahan o iniisip na possible pala mangyari 'yun. Every day deserve mong tawaging Best Girlfriend, kasi best ka talaga. It's not just me ang minahal mo, pati rin ang magulang ko, that's why I am thankful na nakilala kita, and I always will. Mahal kita nang dagha, babu ko! 💖</p>
+        <button onclick="showModal()">Click Me</button>
+
+        <!-- Photo Gallery -->
+        <div class="gallery">
+            <img src="Light.jpeg" alt="Memory 1">
+            <img src="medjL.jpg" alt="Memory 2">
+            <img src="HOLYMOLY.jpeg" alt="Memory 3">
+            <img src="Messenger_creation_44561088-387C-4D41-A0B3-8E5E473125A4.jpeg" alt="Memory 4">
+        </div>
+
+        <!-- Quotes -->
+        <div class="quotes" id="quotes"></div>
+
+        <!-- Timeline with Polaroid Photos -->
+        <section class="timeline">
+            <h2>Our Beautiful Journey 🌸</h2>
+            <div class="timeline-item">
+                <div class="date">Dec 6, 2023</div>
+                <img src="moma.jpg" alt="The Day We Met">
+                <div class="content">
+                    <h3>The Day We Watch Together</h3>
+                    <p>The moment I realized that we have the same hobby, which is the movies. We love movies so much. ✨</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Feb 14, 2025</div>
+                <img src="valentine.jpg" alt="Valentine's Day">
+                <div class="content">
+                    <h3>Valentine’s Day</h3>
+                    <p>Our first Valentine's Day na may involve na flowers, the first flowers na nagkaroon ka from me hehehe. even gabing gabi na, we still made it, kahit malamok pa. hihi mwuah 💘</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Dec 23, 2024</div>
+                <img src="unforgettable.jpg" alt="Unforgettable Trip">
+                <div class="content">
+                    <h3>Unforgettable Trip</h3>
+                    <p>That day we laughed endlessly, made memories, and felt unstoppable. The day we cherished the time where we have each other. Chikahan, kulitan, harutan, at maraming kwentuhan. 🌅</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Today</div>
+                <img src="today.jpeg" alt="Today">
+                <div class="content">
+                    <h3>National Girlfriend Day</h3>
+                    <p>I celebrate you today and every day. You are my forever. Your boyfie is always here, I will never leave you. I love you, Bubs! ❤️</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>💌 I Love You!</h2>
+            <p>Babu, Pasensya na at ito lang kaya kong ibigay sa'yo, babawi ako sa'yo love ko. Mwuah 💕</p>
+            <button class="close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+<!-- Background Music -->
+    <audio id="bg-music" loop autoplay playsinline>
+        <source src="DARATING DIN - TJ Monterde  OFFICIAL LYRIC VIDEO.mp3" type="audio/mp3">
+    </audio>
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
+
+
+    <footer>Made with ❤️ by Your Boyfriend</footer>
+
+    <script>
+        // Floating hearts
+        const hearts = document.querySelector('.hearts');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.innerHTML = '❤️';
+            hearts.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
+
+        // Quotes Carousel with Fade
+        const quotes = [
+            "In your eyes, I found my home; in your heart, I found my peace. 💖",
+            "I am me when I'm with you. 🥰",
+            "You're the source of my happiness. 🌸",
+            "Forever isn't forever without our name. ❤️",
+            "You are the poem I never knew how to write. ✨"
+        ];
+        let quoteIndex = 0;
+        const quoteDiv = document.getElementById('quotes');
+        function changeQuote() {
+            quoteDiv.style.opacity = 0;
+            setTimeout(() => {
+                quoteDiv.textContent = quotes[quoteIndex];
+                quoteDiv.style.opacity = 1;
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+            }, 500);
+        }
+        changeQuote();
+        setInterval(changeQuote, 4000);
+
+        // Timeline Scroll Animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        window.addEventListener('scroll', () => {
+            const triggerBottom = window.innerHeight * 0.9;
+            timelineItems.forEach(item => {
+                const boxTop = item.getBoundingClientRect().top;
+                if (boxTop < triggerBottom) {
+                    item.classList.add('show');
+                }
+            });
+        });
+
+        // Modal
+        const modal = document.getElementById('modal');
+        function showModal() {
+            modal.style.display = 'flex';
+        }
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Music Auto-play (iPhone safe with fade-in)
+    // Music Control
+        const music = document.getElementById('bg-music');
+        let isPlaying = true;
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+            } else {
+                music.play();
+            }
+            isPlaying = !isPlaying;
+        }
+
+    </script>
+</body>
+</html>
